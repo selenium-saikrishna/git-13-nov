@@ -1,0 +1,56 @@
+Roles in ansible
+======================
+Role allows us to configure group of nodes
+and also make our code modulear so it 
+can be resued on many nodes
+
+Apache--role for apache
+what ever is required for apache2 should be present
+in the role
+
+ansible-galaxy init apache --offline
+
+Components of a role
+1 defaults-stores data about the role/application.
+           default variables 
+
+2 files- files to be copied to remote machines
+3 handlers- tasks which are based on some actions.triggers
+        in case my httpd.conf changes,it should trigger
+        service restart.
+4 meta-information about the role
+       authotname,supported platfroms,dependencies etc
+5 taskd-actula actions will be stored in tasks folder
+         core logic..like installing packages,copying files
+6 templates- for storing dynamic files...templates
+           created using jinja2 template language
+7 vars-both vars and defaults store variables but variables
+      stored under vars have higher priority and are difficult 
+      to overwrite.
+
+
+create a file main.yml
+include: install.yml
+include: configure.yml
+include: service.yml
+
+vim install.yml
+---
+# installing https packages
+- name: install apache2
+  apt:
+   name: apache2
+   state: latest
+:wq
+
+vim configure.yml
+---
+- name: httpd.conf file
+  copy: src=httpd.conf dest=/etc/httpd/conf/httpd.conf
+  notify:
+   - restart apache service
+  name: send index.html
+  copy: src=index.html dest=/var/www/html/index.html
+
+:wq
+

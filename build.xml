@@ -1,0 +1,21 @@
+<project name="ANT Build" default="build">
+	<target name="clean">
+		<delete dir="C:\Aug_10_2017_SeleniumBatch\Testing\Build"/>
+	</target>
+	<target name="init" depends="clean">
+		<mkdir dir="C:\Aug_10_2017_SeleniumBatch\Testing\Build"/>
+		<mkdir dir="C:\Aug_10_2017_SeleniumBatch\Testing\Build\Classes"/>
+		<mkdir dir="C:\Aug_10_2017_SeleniumBatch\Testing\Build\Jarfile"/>
+	</target>
+	<target name="compile" depends="init">
+		 <javac srcdir="C:\Aug_10_2017_SeleniumBatch\Testing\src"
+         destdir="C:\Aug_10_2017_SeleniumBatch\Testing\Build\Classes"
+         classpath="C:\Aug_10_2017_SeleniumBatch\Testing\lib\selenium-server-standalone-2.48.2.jar"
+         
+  />
+	</target>
+	<target name="build" depends="compile">
+		<jar destfile="C:\Aug_10_2017_SeleniumBatch\Testing\Build\Jarfile\intelliq-1.0.jar" 
+		     basedir="C:\Aug_10_2017_SeleniumBatch\Testing\Build\Classes"/>
+	</target>
+</project>

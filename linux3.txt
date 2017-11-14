@@ -1,0 +1,79 @@
+
+
+To change the permissions on files we can use chmod
+Read - 4
+Write - 2
+Execute - 1
+To give all permissions to owner,group and others on file1
+chmod 777 file1
+To give read and write permissions to owner,write to group
+and read and execute to others
+chmod 625 file1
+To give execute permsiions to owner,wite and execute to group
+and no permissions to others
+chmod 130 file1
+
+To change the permissions for the parent dir and also all
+subdirectories and files present in it
+chmod -R 777 file1
+
+Permissions can also be set using the alphabetical notations
+user   u
+group  g
+others o
+we can use + - = to modify permissions
+To add read permissions only for user
+chmod u+r file1
+To remove read and execute permissions for user,add write 
+permissions for group and assign execute permissions for others
+chmod u-rx,g+w,o=x file1
+
+Process related commands
+=============================
+to find the list of processes currently running
+ps
+
+To find all the processes ie user defined and system processes
+ps -aux
+
+To perform live monitoring of processes
+top
+
+To find  memory info
+free or free -h
+To find disk usage
+du or du -h
+To find disk free space
+df -h
+To kill a process 
+kill : kill is used generally will 2 signals 9 and 15
+kill -9 pid
+kill -15 pid
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
